@@ -44,6 +44,17 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
+      // env: ctx.dev
+      //   ? {
+      //       API: JSON.stringify(
+      //         "https://newsapi.org/v2/top-headlines?country=br&apiKey=fdadf02d20ca4afdb98e33ecbae1fabf"
+      //       ),
+      //     }
+      //   : {
+      //       API: JSON.stringify(
+      //         "https://newsapi.org/v2/top-headlines?country=br&apiKey=fdadf02d20ca4afdb98e33ecbae1fabf"
+      //       ),
+      //     },
       vueRouterMode: "history", // available values: 'hash', 'history'
 
       // transpile: false,

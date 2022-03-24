@@ -66,7 +66,6 @@ export default {
         const response = await api.get("top-headlines", {
           params: {
             country: "br",
-            category: "sports",
           },
         });
         this.DadosApi = response.data.articles;
