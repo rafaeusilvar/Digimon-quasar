@@ -20,26 +20,10 @@
               <div id="title" class="row text-title justify-center text-white">
                 {{ DadosApi.title }}
               </div>
-            </q-card-section>
-            <div class="row justify-center">
-              <q-btn
-                color="grey"
-                round
-                flat
-                dense
-                :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                @click="expanded = !expanded"
-              />
-            </div>
-            <q-slide-transition>
-              <div v-show="expanded">
-                <q-separator />
-                <q-card-section class="text-subitle2 text-grey text-center">
-                  {{ DadosApi.description }}
-                </q-card-section>
+              <div id="description" class="text-caption text-grey text-center">
+                {{ DadosApi.description }}
               </div>
-            </q-slide-transition>
-
+            </q-card-section>
             <q-card-actions class="row justify-center q-my-md">
               <div class="row text-caption text-grey text-center">
                 {{ DadosApi.source.name }}
@@ -65,17 +49,14 @@
     </div>
   </q-page>
 </template>
-
 <script>
 import { api } from "boot/axios";
-import { ref } from "vue";
 
 export default {
   name: "infoApi",
   data() {
     return {
       DadosApi: [],
-      expanded: ref(false),
     };
   },
   mounted() {
@@ -90,10 +71,11 @@ export default {
         const response = await api.get("top-headlines", {
           params: {
             country: "br",
+            category: "business",
           },
         });
         this.DadosApi = response.data.articles;
-        console.log(response.data.articles);
+        console.log(DadosApi.data.articles);
         this.$q.loading.hide();
       } catch (error) {
         alert(error);
@@ -118,6 +100,7 @@ export default {
   font-family: "M PLUS 1";
   color: #000;
   padding-top: 1rem;
+  padding-block-end: 1.4rem;
 }
 #description {
   color: #333;

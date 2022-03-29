@@ -1,4 +1,4 @@
-<template>
+  <template>
   <q-page class="container q-ma-xl">
     <div class="row gutter-sm">
       <q-infinite-scroll @load="onLoad" :offset="250">
@@ -7,19 +7,25 @@
           v-for="(DadosApi, index) of DadosApi"
           :key="index"
         >
-          <q-card id="q-card">
+          <q-card
+            id="q-card"
+            class="shadow-10"
+            style="
+              background: radial-gradient(circle, #082f4f 0%, #014a88 100%);
+            "
+          >
             <q-img :ratio="16 / 9" id="urlToImage" :src="DadosApi.urlToImage">
             </q-img>
-            <q-card-section class="q-pt-none justify-center">
-              <div id="title" class="row text-title">
+            <q-card-section class="q-pt-none">
+              <div id="title" class="row text-title justify-center text-white">
                 {{ DadosApi.title }}
               </div>
-              <div id="description" class="row text-caption">
+              <div id="description" class="text-caption text-grey text-center">
                 {{ DadosApi.description }}
               </div>
             </q-card-section>
             <q-card-actions class="row justify-center q-my-md">
-              <div class="row text-caption text-grey justify-center">
+              <div class="row text-caption text-grey text-center">
                 {{ DadosApi.source.name }}
               </div>
               <q-btn
@@ -43,7 +49,6 @@
     </div>
   </q-page>
 </template>
-
 <script>
 import { api } from "boot/axios";
 
