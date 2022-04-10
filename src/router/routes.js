@@ -32,6 +32,10 @@ const routes = [
         path: "health",
         component: () => import("pages/post/postsHealth"),
       },
+      {
+        path: "test",
+        component: () => import("pages/post/postsTest"),
+      },
     ],
   },
 

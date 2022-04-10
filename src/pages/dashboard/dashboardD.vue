@@ -1,5 +1,5 @@
   <template>
-  <q-page class="container q-ma-xl">
+  <q-page id="q-page" class="column items-center">
     <div class="row gutter-sm">
       <q-infinite-scroll @load="onLoad" :offset="250">
         <div
@@ -36,24 +36,23 @@
                 <q-separator />
                 <q-card-section class="text-subitle2 text-grey text-center">
                   {{ DadosApi.description }}
+                  <q-card-actions class="justify-center q-my-md">
+                    <div class="text-caption text-grey text-center">
+                      Fonte: {{ DadosApi.source.name }}
+                    </div>
+                    <q-btn
+                      v-bind:href="DadosApi.url"
+                      target="_blank"
+                      size="12px"
+                      class="row btn-fixed-width full-width btn"
+                      color="blue-7"
+                      label="Detalhes"
+                      icon="newspaper"
+                    />
+                  </q-card-actions>
                 </q-card-section>
               </div>
             </q-slide-transition>
-
-            <q-card-actions class="row justify-center q-my-md">
-              <div class="row text-caption text-grey text-center">
-                {{ DadosApi.source.name }}
-              </div>
-              <q-btn
-                v-bind:href="DadosApi.url"
-                target="_blank"
-                size="12px"
-                class="row btn-fixed-width full-width"
-                color="blue-7"
-                label="Detalhes"
-                icon="newspaper"
-              />
-            </q-card-actions>
           </q-card>
         </div>
         <template v-slot:loading>
@@ -111,13 +110,15 @@ export default {
   width: 50rem;
 }
 #q-card {
-  padding-top: 3rem;
+  margin-block-end: 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
 }
 #title {
-  font-size: 1rem;
+  text-align: center;
+  font-size: 1.4rem;
   font-family: "M PLUS 1";
-  color: #000;
-  padding-top: 1rem;
+  padding-top: 1.3rem;
 }
 #description {
   color: #333;
@@ -128,11 +129,18 @@ export default {
   margin-right: auto;
 }
 @media screen and (max-width: 700px) {
+  #q-page {
+    display: flex;
+    justify-items: center;
+    margin-left: 1.3rem;
+    margin-right: 1.3rem;
+  }
   #urlToImage {
     display: flex;
-    padding-left: auto;
-    padding-right: auto;
-    width: 270px;
+    width: 350px;
+  }
+  #title {
+    font-size: 15px;
   }
 }
 </style>

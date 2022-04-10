@@ -12,10 +12,9 @@
             @click="toggleLeftDrawer"
           />
           <q-toolbar-title id="titleSite"> NOTÍCIAS </q-toolbar-title>
-          <BuscadorN />
+          <!-- <BuscadorN /> -->
         </q-toolbar>
       </q-header>
-      <CarrouselD />
       <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
         <q-list style="color: #024781">
           <q-item-label header>
@@ -62,8 +61,7 @@
 </template>
 
 <script>
-import CarrouselD from "src/components/CarousselD.vue";
-import BuscadorN from "components/search.vue";
+// import BuscadorN from "components/search.vue";
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 
@@ -93,8 +91,7 @@ export default defineComponent({
 
   components: {
     EssentialLink,
-    BuscadorN,
-    CarrouselD,
+    // BuscadorN,
   },
 
   setup() {

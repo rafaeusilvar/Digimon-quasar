@@ -2,6 +2,7 @@
   <q-page class="container q-ma-xl">
     <div class="row gutter-sm">
       <q-infinite-scroll @load="onLoad" :offset="250">
+        <div></div>
         <div
           class="col-md-7"
           v-for="(DadosApi, index) of DadosApi"
