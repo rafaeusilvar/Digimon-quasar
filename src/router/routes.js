@@ -3,10 +3,10 @@ const routes = [
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: "/", component: () => import("pages/dashboard/dashboardD.vue") },
+      { path: "/", component: () => import("src/pages/post/dashboardD.vue") },
       {
         path: "dashboard",
-        component: () => import("pages/dashboard/dashboardD.vue"),
+        component: () => import("src/pages/post/dashboardD.vue"),
       },
       {
         path: "sports",

@@ -1,21 +1,85 @@
 <template>
   <div>
-    <InfiniteScrool />
+    <form>
+      <input type="text" v-model="input_name" />
+      <input type="submit" value="Enviar" v-on:click="submitForm" />
+    </form>
+  </div>
+  <div>
+    <!-- <InfiniteScrool /> -->
     <h2>
-      {{ NomeAplicacao }}
+      <!-- {{ NomeAplicacao }} -->
     </h2>
+  </div>
+  <div class="col-md-7" v-for="(DadosApi, index) of DadosApi" :key="index">
+    <q-card
+      id="q-card"
+      class="shadow-10"
+      style="background: radial-gradient(circle, #082f4f 0%, #014a88 100%)"
+    >
+      <q-img :ratio="16 / 9" id="urlToImage" :src="DadosApi.urlToImage">
+      </q-img>
+      <q-card-section class="q-pt-none">
+        <div id="title" class="row text-title justify-center text-white">
+          {{ DadosApi.title }}
+        </div>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 <script>
 import InfiniteScrool from "components/infiniteScrool.vue";
+import { api } from "boot/axios";
+
 export default {
   data() {
     return {
+      nome: "",
       NomeAplicacao: "Olá mundo",
+      DadosApi: [],
+      input_name: "",
     };
   },
+  mounted() {
+    this.getinfoAPI();
+  },
+  methods: {
+    submitForm(e) {
+      e.addEventListener("click"), (this.nome = this.input_name);
+      console.log(this.input_name);
+    },
+    async getinfoAPI() {
+      // incio de data formata para buscar a noticia mais atual
+      let data = new Date();
+      let dataFormatada =
+        data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + data.getDate();
+      console.log(dataFormatada);
+      //exemplo de saída: 2020-1-29
+      // final de data formatada
+      this.$q.loading.show({
+        delay: 400, // ms
+      });
+      // inicio de get newsApi
+      try {
+        const response = await api.get("everything", {
+          params: {
+            language: "pt",
+            q: `a + ${this.nome}`,
+            from: `${dataFormatada}`, // data
+            sortBy: "popularity",
+          },
+        });
+        this.DadosApi = response.data.articles;
+        console.log(response.data.articles);
+        // final de get newsApi
+        this.$q.loading.hide();
+      } catch (error) {
+        alert(error);
+      }
+    },
+  },
   components: {
-    InfiniteScrool,
+    // InfiniteScrool,
   },
 };
 </script>
@@ -51,3 +115,14 @@ export default {
   }
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+

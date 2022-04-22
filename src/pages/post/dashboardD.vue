@@ -116,7 +116,7 @@ export default {
 }
 #title {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-family: "M PLUS 1";
   padding-top: 1.3rem;
 }
