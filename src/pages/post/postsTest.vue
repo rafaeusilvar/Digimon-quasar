@@ -54,7 +54,7 @@ export default {
       let dataFormatada =
         data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + data.getDate();
       console.log(dataFormatada);
-      //exemplo de saída: 2020-1-29
+      //exemplo de saída: 2022-1-29
       // final de data formatada
       this.$q.loading.show({
         delay: 400, // ms
@@ -115,14 +115,3 @@ export default {
   }
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
